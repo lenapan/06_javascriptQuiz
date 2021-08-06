@@ -22,6 +22,11 @@ function setTime() {
 }
 
 /************************************************** */
+//assigning multiple choice buttons to a variable
+var a = document.getElementById("a");
+var b = document.getElementById("b");
+var c = document.getElementById("c");
+var e = document.getElementById("d");
 
 function displayQuestions(){
   var q = document.getElementById("questions");
@@ -35,24 +40,46 @@ function displayQuestions(){
   var title = document.getElementById("question-title");
   var choice = document.getElementById("choices");
 
-  var choice1 = document.createElement("button");
-  var choice2 = document.createElement("button");
-  var choice3 = document.createElement("button");
+    title.textContent = quiz[0].quest;
+    a.textContent = "A: " +quiz[0].a;
+    b.textContent = "B: " +quiz[0].b;
+    c.textContent = "C: " +quiz[0].c;
+    d.textContent = "D: " +quiz[0].d;
 
-    choice1.textContent = "A: " + quiz[0].a;
-    choice2.textContent = "B: " +quiz[0].b;
-    choice3.textContent = "C: " +quiz[0].c;
-    q.appendChild(choice1);
-    q.appendChild(choice2); 
-    q.appendChild(choice3);
+  var i = 1;
 
-  var i = 0;
-
-  title.addEventListener("click", function(){
-  if (i < quiz[i].q.length) {
-    title.textContent = quiz[i].q;
+  a.addEventListener("click", function(){
+  if (i < quiz[i].quest.length) {
+    title.textContent = quiz[i].quest;
     i++;
-  } else if(quiz[i].q === undefined){
+  } else if(quiz[i].quest === undefined){
+   console.log("Done!");
+  }
+  });
+
+   b.addEventListener("click", function(){
+  if (i < quiz[i].quest.length) {
+    title.textContent = quiz[i].quest;
+    i++;
+  } else if(quiz[i].quest === undefined){
+   console.log("Done!");
+  }
+  });
+
+    c.addEventListener("click", function(){
+  if (i < quiz[i].quest.length) {
+    title.textContent = quiz[i].quest;
+    i++;
+  } else if(quiz[i].quest === undefined){
+   console.log("Done!");
+  }
+  });
+
+     d.addEventListener("click", function(){
+  if (i < quiz[i].quest.length) {
+    title.textContent = quiz[i].quest;
+    i++;
+  } else if(quiz[i].quest === undefined){
    console.log("Done!");
   }
   });
