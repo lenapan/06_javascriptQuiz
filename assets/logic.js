@@ -7,50 +7,61 @@ $(document).ready(function(){
 
 });
 */
-var quiz =   
-  {
-    id:1,
-    question: "Why?"
-  }
-
-  
-  
-   
-  
-  
 
 /************************************************** */
 var countDown = document.querySelector(".timer");
-var secondsLeft = 1000;
+var start = 0;
 
 function setTime() {
   var timerInterval = setInterval(function() {
-    secondsLeft--;
+    start++;
     countDown.style.color="red";
-    countDown.textContent = "Time Remaining: " + secondsLeft;
-
-    if(secondsLeft === 0) {
-      clearInterval(timerInterval);
-      sendMessage();
-    }
+    countDown.textContent = "Time: " + start;
 
   }, 1000);
 }
-function sendMessage() {
- alert("Time is up");
-}
+
 /************************************************** */
+
 function displayQuestions(){
-  q = document.getElementById("questions");
+  var q = document.getElementById("questions");
+      q.style.display = "block"; 
+      q.style.fontWeight = "bold"; 
+      q.style.color = "skyblue";
 
-  q.style.display = "block";
-  q.style.fontWeight = "bold";
-  q.style.color = "skyblue";
+  var hide = document.getElementById("start");
+      hide.style.display = "none";
+
+  var title = document.getElementById("question-title");
+  var choice = document.getElementById("choices");
+
+  var choice1 = document.createElement("button");
+  var choice2 = document.createElement("button");
+  var choice3 = document.createElement("button");
+
+    choice1.textContent = "A: " + quiz[0].a;
+    choice2.textContent = "B: " +quiz[0].b;
+    choice3.textContent = "C: " +quiz[0].c;
+    q.appendChild(choice1);
+    q.appendChild(choice2); 
+    q.appendChild(choice3);
+
+  var i = 0;
+
+  title.addEventListener("click", function(){
+  if (i < quiz[i].q.length) {
+    title.textContent = quiz[i].q;
+    i++;
+  } else if(quiz[i].q === undefined){
+   console.log("Done!");
+  }
+  });
+
+  }
   
-  q.textContent = quiz.question;
-}
-
 //When user clicks the start button, timer starts and questions appear
-document.getElementById("start").addEventListener("click", displayQuestions);
-document.getElementById("start").addEventListener("click", setTime);
-        //  $("#start").on("click", setTime());
+function startQuiz(a){
+  document.getElementById("start").addEventListener("click", a);
+}
+startQuiz(displayQuestions);
+startQuiz(setTime);
