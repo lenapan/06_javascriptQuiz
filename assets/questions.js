@@ -1,31 +1,31 @@
  var quiz =[
         {quest: "Event Delegation is: ",
-         a: "correct", b:"no", c:"no", answer: "correct"},
+         a: "no", b:"no", c:"no", d:"yes for Q1", answer: "d"},
 
         {quest: "Explain how 'this' works in javascript: ", 
-         a: "correct", b:"no", c:"no", answer: "correct"},
+         a: "no", b:"no", c:"no", d:"yes for Q2", answer: "d"},
 
         {quest: "What is prototypal inheritance? ", 
-         a: "correct", b:"no", c:"no", answer: "correct"},
+         a: "yes for Q3", b:"no", c:"no", d:"no", answer: "a"},
 
         {quest: "Difference between AMD vs CommonJS ", 
-         a: "correct", b:"no", c:"no", answer: "correct"},
+         a: "yes for Q4", b:"no", c:"no", d:"no", answer: "a"},
 
         {quest: "Explain why the following doesn't work as an IIFE: function foo() {} (); ", 
-         a: "correct", b:"no", c:"no", answer: "correct"},
+         a: "yes for Q5", b:"no", c:"no", d:"no", answer: "a"},
 
         {quest: "Difference between null, undefined or undeclared: ",
-         a: "correct", b:"no", c:"no", answer: "correct"},
+         a: "yes for Q6", b:"no", c:"no", d:"no", answer: "a"},
 
         {quest: "What is a closure? ",
-         a: "correct", b:"no", c:"no", answer: "correct"},
+         a: "yes for Q7", b:"no", c:"no", d:"no", answer: "a"},
 
         {quest: "Typical use case for anonymous functions: ",
-         a: "correct", b:"no", c:"no", answer: "correct"},
+         a: "yes for Q8", b:"no", c:"no", d:"no", answer: "a"},
 
         {quest: "Code organzation: Difference between module pattern and classical inheritance ",
-         a: "correct", b:"no", c:"no", answer: "correct"},
+         a: "yes for Q9", b:"no", c:"no", d:"no", answer: "a"},
          
         {quest: "Difference between host objects and native objects is: ",
-         a: "correct", b:"no", c:"no", answer: "correct"}
+         a: "no", b:"no", c:"no", d:"yes for Q10", answer: "d"}
     ];
