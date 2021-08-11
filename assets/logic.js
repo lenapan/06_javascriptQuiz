@@ -22,6 +22,7 @@ var answer = 0; // to compare what user selects VS the correct answer in each qu
 var correct = 0;
 var end = document.getElementById("end-screen");
 var score = document.getElementById("final-score");
+var initials = document.getElementById("initials");
 
 function displayQuestions(){
   var q = document.getElementById("questions");
@@ -33,7 +34,7 @@ function displayQuestions(){
       hide.style.display = "none";
 
   var title = document.getElementById("question-title");
-  //var choice = document.getElementById("choices");
+
     title.textContent = quiz[0].quest;
     a.textContent = quiz[0].a;
     b.textContent = quiz[0].b;
@@ -67,6 +68,14 @@ function checkABCD(userSelect){
     console.log("Wrong. " + "Answer is " + quiz[answer].answer);
     console.log("You selected " + userSelect);
   }
+}
+function saveScore(){
+  var n = initials.value;
+  var people = [];
+  people.push({name: n});
+  console.log(n);
+  console.log(people);
+  window.location.href="assets/highscores.html";
 }
 
 //When user clicks the start button, timer starts and questions appear
