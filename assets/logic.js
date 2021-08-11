@@ -1,13 +1,22 @@
 var countDown = document.querySelector(".timer");
-var start = 555;
+var start = 999;
+var interval;
 
 function setTime() {
-  var timerInterval = setInterval(function() {
+    interval = setInterval(function() {
     start--;
     countDown.style.color="red";
     countDown.textContent = "Time: " + start;
 
   }, 1000);
+}
+function reduceByTen() {
+    setInterval(function() {
+    start= start-10;
+  }, 1000);
+}
+function pauseTime(){
+  clearInterval(interval);
 }
 /************************************************** */
 //assigning multiple choice buttons to a variable
@@ -17,8 +26,8 @@ var c = document.getElementById("c");
 var d = document.getElementById("d");
 
 // index for looping through the quiz array of question objects
-var i = 1; //We're declaring this at 1 for the "next click" or  next question because when user hits "Start Quiz," it already starts at index 0. Once user selects a choice, the next question to appear needs to be in index 1, not 0.          
-var answer = 0; // to compare what user selects VS the correct answer in each question object in the quiz array
+var i = 1; //'click' loop to start at index 1, not 0. Because the previous question is already at index 0 when you hit "Start Quiz"         
+var answer = 0; // to be used for looping through the corresponding answers to each question for COMPARISON
 var correct = 0;
 var end = document.getElementById("end-screen");
 var score = document.getElementById("final-score");
@@ -34,7 +43,7 @@ function displayQuestions(){
       hide.style.display = "none";
 
   var title = document.getElementById("question-title");
-
+  
     title.textContent = quiz[0].quest;
     a.textContent = quiz[0].a;
     b.textContent = quiz[0].b;
@@ -55,29 +64,36 @@ function displayQuestions(){
         q.style.display = "none";
         end.style.display = "block";
         score.innerHTML = correct + " out of " + quiz.length;
+        pauseTime(); console.log(countDown.innerText + " seconds remaining");
         }  
     });
   });
 } 
 function checkABCD(userSelect){
   if(userSelect == quiz[answer].answer){   // see questions.js file to check out the quiz objects and the answers to the multiple choice questions
-    correct++;
+    correct++; 
     console.log(correct +" Correct." + " Answer is " + quiz[answer].answer);
     console.log("You selected " + userSelect);
+    localStorage.getItem(correct);
+    localStorage.setItem("Correct Answers out of 10", correct);
   }else { 
     console.log("Wrong. " + "Answer is " + quiz[answer].answer);
     console.log("You selected " + userSelect);
+    reduceByTen();
   }
 }
 function saveScore(){
   var n = initials.value;
   var people = [];
   people.push({name: n});
+
   console.log(n);
   console.log(people);
-  window.location.href="assets/highscores.html";
-}
 
+  localStorage.getItem(n);
+  localStorage.setItem("initial", n);
+ // window.location.href="assets/highscores.html";
+}
 //When user clicks the start button, timer starts and questions appear
 function startQuiz(a){
   document.getElementById("start").addEventListener("click", a);
