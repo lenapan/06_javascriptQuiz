@@ -72,8 +72,8 @@ function checkABCD(userSelect){
     correct++; 
     console.log(correct +" Correct." + " Answer is " + quiz[answer].answer);
     console.log("You selected " + userSelect);
-    JSON.parse(localStorage.getItem(correct));
-    localStorage.setItem("Correct Answers out of 10", JSON.stringify(correct));
+    localStorage.getItem(correct);
+    localStorage.setItem("Correct Answers out of 10", correct);
   }else { 
     console.log("Wrong. " + "Answer is " + quiz[answer].answer);
     console.log("You selected " + userSelect);
@@ -81,16 +81,14 @@ function checkABCD(userSelect){
   }
 }
 function saveScore(){
-  var n = initials.value;
-  var people = [];
+  var n = initials.value;   var t = countDown.innerText;
+  localStorage.getItem(n); localStorage.getItem(t);
+  localStorage.setItem("initials", n); localStorage.setItem("time", t);
+ /* var people = [];
   people.push({initial: n, score: correct,time: countDown.innerHTML});
-
-  console.log(n);
-  console.log(people);
-
   JSON.parse(localStorage.getItem(people));
-  localStorage.setItem("people", JSON.stringify(people));
- // window.location.href="assets/highscores.html";
+  localStorage.setItem("people", JSON.stringify(people));*/
+  window.location.href="assets/highscores.html";
 }
 //When user clicks the start button, timer starts and questions appear
 function startQuiz(a){
