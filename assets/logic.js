@@ -1,13 +1,11 @@
-var countDown = document.querySelector(".timer");
+var countDown = document.querySelector("#time");
 var start = 999;
 var interval;
 
 function setTime() {
     interval = setInterval(function() {
     start--;
-    countDown.style.color="red";
-    countDown.textContent = "Time: " + start;
-
+    countDown.textContent = start;
   }, 1000);
 }
 function reduceByTen() {
@@ -74,8 +72,8 @@ function checkABCD(userSelect){
     correct++; 
     console.log(correct +" Correct." + " Answer is " + quiz[answer].answer);
     console.log("You selected " + userSelect);
-    localStorage.getItem(correct);
-    localStorage.setItem("Correct Answers out of 10", correct);
+    JSON.parse(localStorage.getItem(correct));
+    localStorage.setItem("Correct Answers out of 10", JSON.stringify(correct));
   }else { 
     console.log("Wrong. " + "Answer is " + quiz[answer].answer);
     console.log("You selected " + userSelect);
@@ -85,13 +83,13 @@ function checkABCD(userSelect){
 function saveScore(){
   var n = initials.value;
   var people = [];
-  people.push({name: n});
+  people.push({initial: n, score: correct,time: countDown.innerHTML});
 
   console.log(n);
   console.log(people);
 
-  localStorage.getItem(n);
-  localStorage.setItem("initial", n);
+  JSON.parse(localStorage.getItem(people));
+  localStorage.setItem("people", JSON.stringify(people));
  // window.location.href="assets/highscores.html";
 }
 //When user clicks the start button, timer starts and questions appear
