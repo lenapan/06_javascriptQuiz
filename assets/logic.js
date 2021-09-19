@@ -9,9 +9,8 @@ function setTime() {
   }, 1000);
 }
 function reduceByTen() {
-    setInterval(function() {
-    start= start-10;
-  }, 1000);
+    //start = start-10;
+    start -= 10;
 }
 function pauseTime(){
   clearInterval(interval);
@@ -26,7 +25,7 @@ var d = document.getElementById("d");
 // index for looping through the quiz array of question objects
 var i = 1; //'click' loop to start at index 1, not 0. Because the previous question is already at index 0 when you hit "Start Quiz"         
 var answer = 0; // to be used for looping through the corresponding answers to each question for COMPARISON
-var correct = 0;
+var correct = 0; //to keep track of how many answers were correct
 var end = document.getElementById("end-screen");
 var score = document.getElementById("final-score");
 var initials = document.getElementById("initials");
@@ -37,7 +36,7 @@ function displayQuestions(){
       q.style.fontWeight = "bold"; 
       q.style.color = "skyblue";
 
-  var hide = document.getElementById("start");
+  var hide = document.querySelector(".start");
       hide.style.display = "none";
 
   var title = document.getElementById("question-title");
@@ -72,8 +71,8 @@ function checkABCD(userSelect){
     correct++; 
     console.log(correct +" Correct." + " Answer is " + quiz[answer].answer);
     console.log("You selected " + userSelect);
-    localStorage.getItem(correct);
-    localStorage.setItem("Correct Answers out of 10", correct);
+    // localStorage.getItem(correct);
+    // localStorage.setItem("Correct Answers out of 10", correct);
   }else { 
     console.log("Wrong. " + "Answer is " + quiz[answer].answer);
     console.log("You selected " + userSelect);
@@ -81,13 +80,33 @@ function checkABCD(userSelect){
   }
 }
 function saveScore(){
-  var n = initials.value;   var t = countDown.innerText;
-  localStorage.getItem(n); localStorage.getItem(t);
-  localStorage.setItem("initials", n); localStorage.setItem("time", t);
- /* var people = [];
-  people.push({initial: n, score: correct,time: countDown.innerHTML});
-  JSON.parse(localStorage.getItem(people));
-  localStorage.setItem("people", JSON.stringify(people));*/
+
+  let player = {
+          initials: initials.value, //<input>
+          time: countDown.innerText,
+          correct: correct
+        };
+  JSON.parse(localStorage.getItem(player.initials)); 
+  JSON.parse(localStorage.getItem(player.time));
+  JSON.parse(localStorage.getItem(player.correct));
+  localStorage.setItem("initials", JSON.stringify(player.initials)); 
+  localStorage.setItem("time", JSON.stringify(player.time));
+  localStorage.setItem("correct", JSON.stringify(player.correct));
+
+  var score = JSON.parse(localStorage.getItem("ALL"));
+  if (score == null){
+    score = [];
+  }
+  score.push(player);
+  localStorage.setItem("ALL", JSON.stringify(score));
+  // var n = initials.value;   var t = countDown.innerText;
+  // localStorage.getItem(n); localStorage.getItem(t);
+  // localStorage.setItem("initials", n); localStorage.setItem("time", t);
+  // var people = [];
+  // people.push({initial: n, score: correct,time: countDown.innerHTML});
+  // JSON.parse(localStorage.getItem(people));
+  // localStorage.setItem("people", JSON.stringify(people));
+  
   window.location.href="assets/highscores.html";
 }
 //When user clicks the start button, timer starts and questions appear
