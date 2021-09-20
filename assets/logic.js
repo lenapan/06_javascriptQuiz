@@ -91,7 +91,7 @@ function saveScore(){
   JSON.parse(localStorage.getItem(player.correct));
   localStorage.setItem("initials", JSON.stringify(player.initials)); 
   localStorage.setItem("time", JSON.stringify(player.time));
-  localStorage.setItem("correct", JSON.stringify(player.correct));
+  localStorage.setItem("Correct Answers out of 10", JSON.stringify(player.correct));
 
   var score = JSON.parse(localStorage.getItem("ALL"));
   if (score == null){
@@ -99,13 +99,6 @@ function saveScore(){
   }
   score.push(player);
   localStorage.setItem("ALL", JSON.stringify(score));
-  // var n = initials.value;   var t = countDown.innerText;
-  // localStorage.getItem(n); localStorage.getItem(t);
-  // localStorage.setItem("initials", n); localStorage.setItem("time", t);
-  // var people = [];
-  // people.push({initial: n, score: correct,time: countDown.innerHTML});
-  // JSON.parse(localStorage.getItem(people));
-  // localStorage.setItem("people", JSON.stringify(people));
   
   window.location.href="assets/highscores.html";
 }
