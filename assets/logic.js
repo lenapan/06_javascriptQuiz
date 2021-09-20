@@ -80,7 +80,6 @@ function checkABCD(userSelect){
   }
 }
 function saveScore(){
-
   let player = {
           initials: initials.value, //<input>
           time: countDown.innerText,
@@ -93,12 +92,12 @@ function saveScore(){
   localStorage.setItem("time", JSON.stringify(player.time));
   localStorage.setItem("Correct Answers out of 10", JSON.stringify(player.correct));
 
-  var score = JSON.parse(localStorage.getItem("ALL"));
-  if (score == null){
-    score = [];
+  var all = JSON.parse(localStorage.getItem("ALL"));
+  if (all == null){
+    all = [];
   }
-  score.push(player);
-  localStorage.setItem("ALL", JSON.stringify(score));
+  all.push(player);
+  localStorage.setItem("ALL", JSON.stringify(all));
   
   window.location.href="assets/highscores.html";
 }
