@@ -1,10 +1,9 @@
 # Coding a multiple choice quiz using `vanilla JS`
 
 ## Description
-Please see [Class Assignment](ClassAssignment.md) for homework instructions.
-* Below is a boiler-plate html page we started with. I changed some of the wording and font for the timer:
+* Below is a boiler-plate html page to start with. I changed some of the wording and font for the timer:
 
-* From here, I built three scripts from scratch using 100% vanilla JavaScript. The first one is a `questions.js` file which contains an array of 10 question objects I came up with. For testing purposes, the correct answer is "yes." From there, I wrote `logic.js` with eventListeners to compare and keep track of correct answers as well as a timer penalty if user gets an answer wrong. Lastly, the `scores.js` file is to append all saved data from localStorage onto a separate 'high scores' html page.
+* From here, I built three scripts from scratch. The first one is a `questions.js` file which contains an array of 10 question objects I came up with. For testing purposes, the correct answer is "yes." From there, I wrote `logic.js` with eventListeners to compare and keep track of correct answers as well as a timer penalty if user gets an answer wrong. Lastly, the `scores.js` file is to append all saved data from localStorage onto a separate 'high scores' html page.
 
 ![Coding Quiz](img/boilerPlate.png)
 
